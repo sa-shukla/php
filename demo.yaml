@@ -1,0 +1,12 @@
+- name: Ansible Tower download build
+  get_url:
+    url: http://172.18.200.140/index.html.gz
+    dest: /tmp
+
+- name: Ansible Tower deploy build
+  copy:
+    src: /tmp/index.html.gz
+    dest: /var/www/html/nginx/index.html.gz
+
+- name: Ansible Tower uncompress build
+  shell: gunzip /var/www/html/nginx/index.html.gz
